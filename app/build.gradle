@@ -1,6 +1,7 @@
 apply plugin: 'android-sdk-manager'
 apply plugin: 'com.android.application'
 apply plugin: 'android-apt'
+apply plugin: 'com.jakewharton.hugo'
 
 def androidToolsVersion = '23.0.1'
 

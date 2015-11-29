@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentManager;
 import java.util.HashMap;
 import java.util.Map;
 
+import hugo.weaving.DebugLog;
 import pl.droidcon.app.R;
 import pl.droidcon.app.ui.fragment.AboutFragment;
 import pl.droidcon.app.ui.fragment.BaseFragment;
@@ -17,6 +18,7 @@ import pl.droidcon.app.ui.fragment.MapAndInfoFragment;
 import pl.droidcon.app.ui.fragment.agenda.AgendaMainFragment;
 import pl.droidcon.app.ui.fragment.schedule.ScheduleMainFragment;
 
+@DebugLog
 public class DrawerFragmentFactory {
 
     private static final String CURRENT_FRAGMENT = "current_fragment";

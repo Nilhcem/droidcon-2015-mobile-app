@@ -49,6 +49,12 @@ android {
     }
 }
 
+repositories {
+    maven {
+        url 'https://github.com/uPhyca/stetho-realm/raw/master/maven-repo'
+    }
+}
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile "com.android.support:appcompat-v7:$androidToolsVersion"
@@ -101,6 +107,7 @@ dependencies {
     debugCompile('com.facebook.stetho:stetho-timber:1.2.0') {
         exclude group: 'com.jakewharton.timber'
     }
+    debugCompile 'com.uphyca:stetho_realm:0.7.2'
 }
 
 def getLocalIp() {

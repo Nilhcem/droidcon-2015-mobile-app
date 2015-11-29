@@ -6,6 +6,7 @@ import com.facebook.stetho.Stetho;
 import com.facebook.stetho.okhttp.StethoInterceptor;
 import com.facebook.stetho.timber.StethoTree;
 import com.squareup.okhttp.OkHttpClient;
+import com.uphyca.stetho_realm.RealmInspectorModulesProvider;
 
 import javax.inject.Inject;
 
@@ -26,7 +27,7 @@ public class StethoInitializer {
         Timber.plant(new StethoTree());
         Stetho.initialize(
                 Stetho.newInitializerBuilder(context)
-                        .enableWebKitInspector(Stetho.defaultInspectorModulesProvider(context))
+                        .enableWebKitInspector(RealmInspectorModulesProvider.builder(context).build())
                         .build());
         httpClient.networkInterceptors().add(new StethoInterceptor());
     }

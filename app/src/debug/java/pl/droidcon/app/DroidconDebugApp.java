@@ -1,0 +1,36 @@
+package pl.droidcon.app;
+
+import android.os.Build;
+
+import jp.wasabeef.takt.Takt;
+
+public class DroidconDebugApp extends DroidconApp {
+
+    /**
+     * Change it manually when you want to display the FPS.
+     * Useful to test the frame rate.
+     */
+    private static final boolean DISPLAY_FPS = false;
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        displayFps(true);
+    }
+
+    @Override
+    public void onTerminate() {
+        displayFps(false);
+        super.onTerminate();
+    }
+
+    private void displayFps(boolean enable) {
+        if (DISPLAY_FPS && Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            if (enable) {
+                Takt.stock(this).play();
+            } else {
+                Takt.finish();
+            }
+        }
+    }
+}

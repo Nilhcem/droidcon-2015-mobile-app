@@ -82,4 +82,5 @@ dependencies {
      */
     compile 'junit:junit:4.12'
 
+    debugCompile 'jp.wasabeef:takt:1.0.2'
 }

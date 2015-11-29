@@ -5,9 +5,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 
+import pl.droidcon.app.BuildConfig;
+
 public final class UrlHelper {
 
-    private static final String BASE_URL = "https://raw.githubusercontent.com/droidconpl/droidcon-2015-web/master/";
+    private static final String BASE_URL = BuildConfig.WS_ENDPOINT + "/";
 
     private UrlHelper() {
 

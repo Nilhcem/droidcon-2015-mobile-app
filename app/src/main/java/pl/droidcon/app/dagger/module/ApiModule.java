@@ -15,6 +15,7 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import io.realm.RealmObject;
+import pl.droidcon.app.BuildConfig;
 import pl.droidcon.app.http.DateTimeConverter;
 import pl.droidcon.app.http.RestService;
 import retrofit.Endpoint;
@@ -26,8 +27,6 @@ import retrofit.converter.GsonConverter;
 
 @Module
 public class ApiModule {
-
-    private final static String BASE_URL = "https://raw.githubusercontent.com/droidconpl/droidcon-2015-web/master";
 
     @Provides
     @Singleton
@@ -83,6 +82,6 @@ public class ApiModule {
     @Provides
     @Singleton
     Endpoint provideEndpoint() {
-        return Endpoints.newFixedEndpoint(BASE_URL);
+        return Endpoints.newFixedEndpoint(BuildConfig.WS_ENDPOINT);
     }
 }

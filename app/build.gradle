@@ -37,6 +37,16 @@ android {
         exclude 'META-INF/LICENSE.txt'
         exclude 'META-INF/NOTICE.txt'
     }
+
+    productFlavors {
+        prod {
+            buildConfigField 'String', 'WS_ENDPOINT', '"https://raw.githubusercontent.com/droidconpl/droidcon-2015-web/master"'
+        }
+
+        mock {
+            buildConfigField 'String', 'WS_ENDPOINT', '"http://' + getLocalIp() + ':8990"'
+        }
+    }
 }
 
 dependencies {
@@ -85,4 +95,17 @@ dependencies {
     compile 'junit:junit:4.12'
 
     debugCompile 'jp.wasabeef:takt:1.0.2'
+}
+
+def getLocalIp() {
+    for (NetworkInterface iface : NetworkInterface.networkInterfaces) {
+        for (InetAddress addr : iface.inetAddresses) {
+            if (!addr.isLoopbackAddress()) {
+                def ip = addr.hostAddress
+                if (ip.startsWith('192.')) {
+                    return ip
+                }
+            }
+        }
+    }
 }

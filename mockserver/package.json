@@ -1,0 +1,9 @@
+{
+  "name": "droidconpl2015-mock-server",
+  "description": "DroidconPL 2015 Mock Server",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "express": "4.13.3"
+  }
+}

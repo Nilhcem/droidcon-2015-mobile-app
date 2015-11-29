@@ -1,0 +1,102 @@
+{
+  "people": [
+    {
+      "id": 1,
+      "firstName": "TayRoar",
+      "lastName": "Swift",
+      "websiteTitle": "Senior Cat Developer",
+      "bio": "Meow meow",
+      "websiteLink": "https://medium.com/@hamen",
+      "facebookLink": null,
+      "twitterHandler": "hamen",
+      "githubLink": "hamen",
+      "linkedIn": "https://ch.linkedin.com/in/ivanmorgillo",
+      "googlePlus": null,
+      "imageUrl": "img/people/cat1.jpg"
+    },
+    {
+      "id": 2,
+      "firstName": "Brad",
+      "lastName": "Kitt",
+      "websiteTitle": "Android Software Catsman",
+      "bio": "Meow meow purrrr",
+      "websiteLink": null,
+      "facebookLink": null,
+      "twitterHandler": "Nilhcem",
+      "githubLink": "Nilhcem",
+      "linkedIn": "https://fr.linkedin.com/pub/gautier-mechling/36/a72/9a0",
+      "googlePlus": "https://plus.google.com/+GautierMechling",
+      "imageUrl": "img/people/cat2.jpg"
+    },
+    {
+      "id": 3,
+      "firstName": "Pablo",
+      "lastName": "Picatso",
+      "websiteTitle": "Entrepreneur",
+      "bio": "Meow meow meeeeowww",
+      "websiteLink": "http://alterego.solutions/",
+      "facebookLink": null,
+      "twitterHandler": "sasa_sekulic",
+      "githubLink": "mrsasha",
+      "linkedIn": "https://de.linkedin.com/in/sasasekulic",
+      "googlePlus": null,
+      "imageUrl": "img/people/cat3.jpg"
+    },
+    {
+      "id": 4,
+      "firstName": "David",
+      "lastName": "Meowie",
+      "websiteTitle": "Google Cat Expert on Android",
+      "bio": "Meow meow rrrrrr",
+      "websiteLink": "http://www.tasomaniac.com/",
+      "facebookLink": null,
+      "twitterHandler": "tasomaniac",
+      "githubLink": "tasomaniac/",
+      "linkedIn": "https://linkedin.com/in/saidtahsindane",
+      "googlePlus": null,
+      "imageUrl": "img/people/cat4.jpg"
+    },
+    {
+      "id": 5,
+      "firstName": "Meowly",
+      "lastName": "Cyrus",
+      "websiteTitle": "Software engimeow at CatLab",
+      "bio": "Meow meow roaar",
+      "websiteLink": "http://kotlin4android.com/",
+      "facebookLink": null,
+      "twitterHandler": "AntonRutkevich",
+      "githubLink": null,
+      "linkedIn": null,
+      "googlePlus": null,
+      "imageUrl": "img/people/cat5.jpg"
+    },
+    {
+      "id": 6,
+      "firstName": "Kitty",
+      "lastName": "Ya-meow-guchi",
+      "websiteTitle": "A Tokyo based Android cat.",
+      "bio": "Meow meow meoooow",
+      "websiteLink": "http://hotchemi.tumblr.com",
+      "facebookLink": null,
+      "twitterHandler": "hotchemi",
+      "githubLink": "hotchemi",
+      "linkedIn": null,
+      "googlePlus": null,
+      "imageUrl": "img/people/cat6.jpg"
+    },
+    {
+      "id": 7,
+      "firstName": "Catalie",
+      "lastName": "Portman",
+      "websiteTitle": "UI Designer @ Meowea",
+      "bio": "Meow meow miaou",
+      "websiteLink": null,
+      "facebookLink": null,
+      "twitterHandler": "magdazadara",
+      "githubLink": null,
+      "linkedIn": "https://pl.linkedin.com/pub/magdalena-zadara/53/971/a8a",
+      "googlePlus": null,
+      "imageUrl": "img/people/cat7.jpg"
+    }
+  ]
+}

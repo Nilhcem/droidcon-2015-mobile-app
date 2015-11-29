@@ -2,12 +2,11 @@ package pl.droidcon.app;
 
 import android.os.Build;
 
-import com.squareup.okhttp.OkHttpClient;
-
 import javax.inject.Inject;
 
 import jp.wasabeef.takt.Takt;
 import pl.droidcon.app.dagger.DroidconInjector;
+import pl.droidcon.app.stetho.StethoInitializer;
 
 public class DroidconDebugApp extends DroidconApp {
 
@@ -17,13 +16,15 @@ public class DroidconDebugApp extends DroidconApp {
      */
     private static final boolean DISPLAY_FPS = false;
 
-    @Inject OkHttpClient mClient;
+    @Inject
+    StethoInitializer stetho;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        displayFps(true);
         DroidconInjector.get().inject(this);
+        displayFps(true);
+        stetho.init();
     }
 
     @Override

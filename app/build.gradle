@@ -96,6 +96,11 @@ dependencies {
     compile 'junit:junit:4.12'
 
     debugCompile 'jp.wasabeef:takt:1.0.2'
+    debugCompile 'com.facebook.stetho:stetho:1.2.0'
+    debugCompile 'com.facebook.stetho:stetho-okhttp:1.2.0'
+    debugCompile('com.facebook.stetho:stetho-timber:1.2.0') {
+        exclude group: 'com.jakewharton.timber'
+    }
 }
 
 def getLocalIp() {

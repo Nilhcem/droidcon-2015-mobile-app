@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import jp.wasabeef.takt.Takt;
 import pl.droidcon.app.dagger.DroidconInjector;
+import pl.droidcon.app.lifecycle.ActivityProvider;
 import pl.droidcon.app.stetho.StethoInitializer;
 
 public class DroidconDebugApp extends DroidconApp {
@@ -19,12 +20,16 @@ public class DroidconDebugApp extends DroidconApp {
     @Inject
     StethoInitializer stetho;
 
+    @Inject
+    ActivityProvider activityProvider;
+
     @Override
     public void onCreate() {
         super.onCreate();
         DroidconInjector.get().inject(this);
         displayFps(true);
         stetho.init();
+        activityProvider.init(this);
     }
 
     @Override

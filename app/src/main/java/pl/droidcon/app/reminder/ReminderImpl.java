@@ -6,15 +6,13 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import org.joda.time.DateTime;
 
 import pl.droidcon.app.model.api.Session;
+import timber.log.Timber;
 
 public class ReminderImpl implements Reminder {
-
-    private static final String TAG = ReminderImpl.class.getSimpleName();
 
     private AlarmManager alarmManager;
 
@@ -31,10 +29,10 @@ public class ReminderImpl implements Reminder {
         DateTime now = DateTime.now();
         DateTime sessionDate = session.date.minusMinutes(1);//now.plusSeconds(10);//
         if (!sessionDate.isAfter(now)) {
-            Log.w(TAG, "Not setting reminder for passed session");
+            Timber.w("Not setting reminder for passed session");
             return;
         }
-        Log.d(TAG, "Setting reminder on " + sessionDate);
+        Timber.d("Setting reminder on %s", sessionDate);
         alarmManager.set(AlarmManager.RTC_WAKEUP, sessionDate.getMillis(), pendingIntent);
     }
 

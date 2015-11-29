@@ -4,7 +4,6 @@ package pl.droidcon.app.reminder;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import java.util.List;
 
@@ -19,10 +18,9 @@ import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.schedulers.Schedulers;
+import timber.log.Timber;
 
 public class ReminderPersistenceImpl implements ReminderPersistence {
-
-    private static final String TAG = ReminderPersistenceImpl.class.getSimpleName();
 
     private static final String SHARED_PREFERENCES_NAME = "reminder";
     private static final String REMINDING_KEY = "reminding";
@@ -57,7 +55,7 @@ public class ReminderPersistenceImpl implements ReminderPersistence {
                 .subscribe(new Action1<RealmSessionNotification>() {
                     @Override
                     public void call(RealmSessionNotification sessionNotification) {
-                        Log.d(TAG, "Added session " + session.title + " to notifications");
+                        Timber.d("Added session %s to notifications", session.title);
                     }
                 });
     }
@@ -70,7 +68,7 @@ public class ReminderPersistenceImpl implements ReminderPersistence {
                 .subscribe(new Action1<Boolean>() {
                     @Override
                     public void call(Boolean aBoolean) {
-                        Log.d(TAG, "Removed notification for session " + session.title);
+                        Timber.d("Removed notification for session %s", session.title);
                     }
                 });
     }
@@ -83,7 +81,7 @@ public class ReminderPersistenceImpl implements ReminderPersistence {
                 .subscribe(new Action1<List<SessionNotification>>() {
                     @Override
                     public void call(List<SessionNotification> sessionNotifications) {
-                        Log.d(TAG, "sessions notification size=" + sessionNotifications.size());
+                        Timber.d("sessions notification size=%d", sessionNotifications.size());
                         for (SessionNotification sessionNotification : sessionNotifications) {
                             databaseManager.session(sessionNotification.getSessionId())
                                     .subscribe(new Action1<Session>() {

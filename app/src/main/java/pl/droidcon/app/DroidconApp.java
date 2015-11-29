@@ -11,6 +11,7 @@ import net.danlew.android.joda.JodaTimeAndroid;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 import pl.droidcon.app.dagger.DroidconInjector;
+import timber.log.Timber;
 
 public class DroidconApp extends Application {
 
@@ -23,5 +24,8 @@ public class DroidconApp extends Application {
                 RealmConfiguration.Builder(this).build());
         Iconify.with(new EntypoModule())
                 .with(new FontAwesomeModule());
+        if (BuildConfig.DEBUG) {
+            Timber.plant(new Timber.DebugTree());
+        }
     }
 }

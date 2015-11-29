@@ -37,11 +37,11 @@ import rx.functions.Action0;
 import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
+import timber.log.Timber;
 
 
 public class AgendaFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener, RecyclerItemClickListener.OnItemClickListener {
 
-    private static final String TAG = AgendaFragment.class.getSimpleName();
     private static final String SESSION_DAY_KEY = "sessionDay";
 
     @Bind(R.id.agenda_view)
@@ -137,7 +137,7 @@ public class AgendaFragment extends Fragment implements SwipeRefreshLayout.OnRef
                 .subscribe(new Subscriber<List<Session>>() {
                     @Override
                     public void onCompleted() {
-                        Log.d(TAG, "onCompleted");
+                        Timber.d("onCompleted");
                     }
 
                     @Override
@@ -163,7 +163,7 @@ public class AgendaFragment extends Fragment implements SwipeRefreshLayout.OnRef
         newDataEventSubscription = dataSubscription.bindNewDataEvent(new Action1<NewDataEvent>() {
             @Override
             public void call(NewDataEvent newDataEvent) {
-                Log.d(TAG, "newDataEvent=" + newDataEvent);
+                Timber.d("newDataEvent=%s", newDataEvent);
                 getSessions();
             }
         }, new Action0() {
@@ -175,7 +175,7 @@ public class AgendaFragment extends Fragment implements SwipeRefreshLayout.OnRef
     }
 
     private void handleError() {
-        Log.e(TAG, "handling error isRefreshing=" + swipeRefreshLayout.isRefreshing());
+        Timber.e("handling error isRefreshing=%b", swipeRefreshLayout.isRefreshing());
         if (swipeRefreshLayout.isRefreshing()) {
             showErrorSnackBar();
         }

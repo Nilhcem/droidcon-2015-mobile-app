@@ -12,7 +12,6 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,6 +52,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
+import timber.log.Timber;
 
 public class SessionActivity extends BaseActivity implements SpeakerList.SpeakerItemClickListener {
 
@@ -156,7 +156,7 @@ public class SessionActivity extends BaseActivity implements SpeakerList.Speaker
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.e(TAG, "favourite check exception", e);
+                        Timber.e(e, "favourite check exception");
                     }
 
                     @Override
@@ -216,12 +216,12 @@ public class SessionActivity extends BaseActivity implements SpeakerList.Speaker
                 .subscribe(new Subscriber<RealmSchedule>() {
                     @Override
                     public void onCompleted() {
-                        Log.d(TAG, "on completed");
+                        Timber.d(TAG, "on completed");
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.e(TAG, "error adding to favourites", e);
+                        Timber.e(TAG, "error adding to favourites", e);
                     }
 
                     @Override
@@ -248,7 +248,7 @@ public class SessionActivity extends BaseActivity implements SpeakerList.Speaker
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.e(TAG, "error removing from favourites", e);
+                        Timber.e(e, "error removing from favourites");
                     }
 
                     @Override

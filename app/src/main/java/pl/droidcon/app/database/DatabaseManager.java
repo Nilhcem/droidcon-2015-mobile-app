@@ -2,7 +2,6 @@ package pl.droidcon.app.database;
 
 
 import android.content.Context;
-import android.util.Log;
 
 import org.joda.time.DateTime;
 
@@ -38,11 +37,9 @@ import pl.droidcon.app.model.db.RealmSpeaker;
 import pl.droidcon.app.rx.RealmObservable;
 import rx.Observable;
 import rx.functions.Func1;
+import timber.log.Timber;
 
 public class DatabaseManager {
-
-    private static final String TAG = DatabaseManager.class.getSimpleName();
-
 
     @Inject
     Context context;
@@ -63,7 +60,7 @@ public class DatabaseManager {
     }
 
     public void registerDataObserver(DataObserver dataObserver) {
-        Log.d(TAG, "register data observer for class=" + dataObserver.getType());
+        Timber.d("register data observer for class=%s", dataObserver.getType());
         List<DataObserver> dataObservers = dataObserverMap.get(dataObserver.getType());
         if (dataObservers == null) {
             dataObservers = new ArrayList<>();
@@ -76,7 +73,7 @@ public class DatabaseManager {
     }
 
     public void unregisterDataObserver(DataObserver dataObserver) {
-        Log.d(TAG, "unregister data observer for class=" + dataObserver.getType());
+        Timber.d("unregister data observer for class=%s", dataObserver.getType());
         List<DataObserver> dataObservers = dataObserverMap.get(dataObserver.getType());
         if (dataObservers == null) {
             throw new IllegalStateException("Not found any registered observers for given type " + dataObserver.getType());
@@ -91,7 +88,7 @@ public class DatabaseManager {
         return RealmObservable.results(context, new Func1<Realm, RealmResults<RealmSession>>() {
             @Override
             public RealmResults<RealmSession> call(Realm realm) {
-                Log.d(TAG, "getting sessions from db for day=" + sessionDay + " and transforming to base models");
+                Timber.d("getting sessions from db for day=%s and transforming to base models", sessionDay);
                 //its a hack
                 Date beginDate = sessionDay.when.toDate();
                 Date endOfDate = sessionDay.when.plusHours(23).toDate();

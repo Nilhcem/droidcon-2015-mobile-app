@@ -7,7 +7,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.NotificationCompat;
-import android.util.Log;
 
 import pl.droidcon.app.R;
 import pl.droidcon.app.dagger.DroidconInjector;
@@ -17,11 +16,10 @@ import pl.droidcon.app.ui.activity.SessionActivity;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.schedulers.Schedulers;
+import timber.log.Timber;
 
 
 public class ReminderReceiver extends BroadcastReceiver {
-
-    private static final String TAG = ReminderReceiver.class.getSimpleName();
 
     private static final String SESSION_KEY = "session";
 
@@ -33,10 +31,10 @@ public class ReminderReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(final Context context, Intent intent) {
-        Log.d(TAG, "received");
+        Timber.d("received");
         final Session session = (Session) intent.getExtras().get(SESSION_KEY);
         if (session == null) {
-            Log.e(TAG, "Session received null");
+            Timber.e("Session received null");
             return;
         }
 
@@ -47,7 +45,7 @@ public class ReminderReceiver extends BroadcastReceiver {
                 .subscribe(new Action1<Boolean>() {
                     @Override
                     public void call(Boolean aBoolean) {
-                        Log.d(TAG, "Removed remind notification for session " + session.title);
+                        Timber.d("Removed remind notification for session %s", session.title);
                         if (aBoolean) {
                             showNotification(context, session);
                         }

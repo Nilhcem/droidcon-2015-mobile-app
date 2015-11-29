@@ -1,8 +1,6 @@
 package pl.droidcon.app.rx;
 
 
-import android.util.Log;
-
 import javax.inject.Inject;
 
 import pl.droidcon.app.dagger.DroidconInjector;
@@ -19,10 +17,9 @@ import rx.functions.Action1;
 import rx.functions.Func2;
 import rx.schedulers.Schedulers;
 import rx.subjects.BehaviorSubject;
+import timber.log.Timber;
 
 public class DataSubscription {
-
-    private static final String TAG = DataSubscription.class.getSimpleName();
 
     @Inject
     BinderUtil binderUtil;
@@ -48,9 +45,9 @@ public class DataSubscription {
                 new Func2<AgendaResponse, SpeakerResponse, NewDataEvent>() {
                     @Override
                     public NewDataEvent call(AgendaResponse agendaResponse, SpeakerResponse speakerResponse) {
-                        Log.d(TAG, "Downloading and saving start.....");
+                        Timber.d("Downloading and saving start.....");
                         databaseManager.saveData(agendaResponse, speakerResponse);
-                        Log.d(TAG, "Downloading and saving end.....");
+                        Timber.d("Downloading and saving end.....");
                         return new NewDataEvent();
                     }
                 })

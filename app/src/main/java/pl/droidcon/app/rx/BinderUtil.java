@@ -1,7 +1,5 @@
 package pl.droidcon.app.rx;
 
-import android.util.Log;
-
 import rx.Observable;
 import rx.Subscriber;
 import rx.Subscription;
@@ -9,10 +7,9 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action0;
 import rx.functions.Action1;
 import rx.subscriptions.CompositeSubscription;
+import timber.log.Timber;
 
 public class BinderUtil {
-
-    private static final String TAG = BinderUtil.class.getSimpleName();
 
     private final CompositeSubscription compositeSubscription = new CompositeSubscription();
 
@@ -56,13 +53,13 @@ public class BinderUtil {
 
         @Override
         public void onCompleted() {
-            Log.d(TAG,"onCompleted");
+            Timber.d("onCompleted");
         }
 
         @Override
         public void onError(Throwable e) {
             e.printStackTrace();
-            Log.e(TAG, "onError", e);
+            Timber.e(e, "onError");
             if (error != null) {
                 error.call();
             }
@@ -70,7 +67,7 @@ public class BinderUtil {
 
         @Override
         public void onNext(U u) {
-            Log.d(TAG,"onNext="+u);
+            Timber.d("onNext=%s", u);
             if (setter != null) {
                 setter.call(u);
             }

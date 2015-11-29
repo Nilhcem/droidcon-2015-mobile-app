@@ -2,17 +2,15 @@ package pl.droidcon.app.reminder;
 
 
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import javax.inject.Inject;
 
 import pl.droidcon.app.dagger.DroidconInjector;
 import pl.droidcon.app.model.api.Session;
 import rx.Subscriber;
+import timber.log.Timber;
 
 public class SessionReminderImpl implements SessionReminder {
-
-    private static final String TAG = SessionReminderImpl.class.getSimpleName();
 
     @Inject
     ReminderPersistence persistence;
@@ -64,7 +62,7 @@ public class SessionReminderImpl implements SessionReminder {
         persistence.sessionsToRemind(new Subscriber<Session>() {
             @Override
             public void onCompleted() {
-                Log.d(TAG, "completed");
+                Timber.d("completed");
             }
 
             @Override
@@ -83,7 +81,7 @@ public class SessionReminderImpl implements SessionReminder {
         persistence.sessionsToRemind(new Subscriber<Session>() {
             @Override
             public void onCompleted() {
-                Log.d(TAG, "completed");
+                Timber.d("completed");
             }
 
             @Override
